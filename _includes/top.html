@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>{{ site.name }}{% if page.title %} - {{ page.title }}{% endif %}</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="/css/normalize.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/syntax.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script>(function($){'use strict';$.fn.konami=function(options){var settings={code:[38,38,40,40,37,39,37,39,66,65]};$.extend(settings,options);var i=0,code=settings.code,length=code.length,success=settings.success,failure=settings.failure;return this.each(function(index){$(this).keydown(function(e){if(e.keyCode===code[i++]){if(i===length){if(success)success.call(this,index);}return;}i=0;if(failure)failure.call(this,index);});});};})(jQuery);</script>
+    <script>
+     $(document).konami({
+       success: function() {
+	 alert('konami');
+       }
+     });
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="donate">
+	<script id='fbcyzum'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=filialpails&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbcyzum');</script>
+	<script src="http://coinwidget.com/widget/coin.js"></script>
+	<script>
+	 CoinWidgetCom.go({
+	   wallet_address: "15umkVpe2mUvakRUVcMsMquYoX9sUvwJDM",
+	   currency: "bitcoin",
+	   counter: "count",
+	   alignment: "br",
+	   qrcode: true,
+	   auto_show: false,
+	   lbl_button: "Donate",
+	   lbl_address: "My Bitcoin Address:",
+	   lbl_count: "donations",
+	   lbl_amount: "BTC"
+	 });
+	 CoinWidgetCom.go({
+	   wallet_address: "LSVF6MQJD3q15bXzhABiDLXX4J57v2gG62",
+	   currency: "litecoin",
+	   counter: "count",
+	   alignment: "br",
+	   qrcode: true,
+	   auto_show: false,
+	   lbl_button: "Donate",
+	   lbl_address: "My Litecoin Address:",
+	   lbl_count: "donations",
+	   lbl_amount: "BTC"
+	 });
+	</script>
+      </div>
+      <header id="header">
+	<h1 id="title"><a href="/">{{ site.name }}</a></h1>
+	<nav id="breadcrumbsNav">
+	  <ul id="breadcrumbsList">
+	    <li class="breadcrumbsListItem">
+	      <a class="breadcrumb" href="/">home</a>
+	    </li>
+	    {% if page.title %}
+	    <li class="breadcrumbsListItem">
+	      → <a class="breadcrumb" href="{{ page.title }}">{{ page.title }}</a>
+	    </li>
+	    {% endif %}
+	  </ul>
+	</nav>
+      </header>

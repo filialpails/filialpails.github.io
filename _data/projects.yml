@@ -1,0 +1,146 @@
+games:
+  - name: Syllogomania
+    description: Pokemon clone
+    genre: Compulsive animal hoarding RPG
+    repo: Syllogomania
+    requirements:
+      - .NET Framework 4.5.1
+      - Lots of balls
+    version: 0.0.0
+    release_date: ~
+    show: false
+  - name: Apophenia
+    description: The nice and accurate prophecies of randomly-generated tarot card readings. Features fully customizable decks. If this software makes any correct predictions, please return it for a full refund.
+    genre: No-trading card game
+    repo: Apophenia
+    requirements:
+      - .NET Framework 4.5.1
+      - Credulity
+    version: 1.1
+    release_date: 2012-11-21
+    show: true
+  - name: Oceanbound
+    description: Seduce middle-aged men, save the world.
+    genre: Kawaii RPG
+    repo: Oceanbound
+    requirements: []
+    version: Christmas Alpha
+    release_date: 2012-12-25
+    show: true
+  - name: Sister Complex
+    credits:
+      art: Kay Gunn
+    description: Naughty nuns
+    genre: Nunsploitation
+    repo: sistercomplex
+    requirements: []
+    version: 0.0.0
+    release_date: ~
+    show: false
+  - name: robotsfindkitten
+    description: |
+      In this game, you are robots (#). Your job is to find kitten. This task
+      is complicated by the existence of various things which are not kitten.
+      Robots must touch items to determine if they are kitten or not. The game
+      ends when robotfindskitten.
+    genre: Multi-user zen simulation
+    repo: robotsfindkitten
+    requirements:
+      - Ruby
+    version: 0.0.2
+    release_date: 2014-01-12
+    show: true
+  - name: VGA
+    description: ''
+    genre: awesome
+    repo: vga
+    requirements:
+      - Ruby
+    version: 0.0.0
+    release_date: ~
+    show: false
+  - name: 'Shin Megami Tensei: IF'
+    description: get ye demons
+    genre: Cyberdemonpunk
+    repo: smtif
+    requirements:
+      - Ruby
+    version: 0.0.0
+    release_date: ~
+    show: false
+  - name: Sburbstuck
+    description: Kids and fun.
+    genre: Self-indulgent
+    repo: sburbstuck
+    requirements:
+      - Ruby
+    version: 0.0.0
+    release_date: ~
+    show: false
+apps:
+  - name: mspanotify-gtk
+    description: Get notified by silly gifs when your favourite webcomics update!
+    repo: mspanotify
+    requirements:
+      - python3
+      - python3-gi
+      - gir1.2-gtk-3.0
+      - gir1.2-appindicator3-0.1
+      - gir1.2-gstreamer-1.0 (optional)
+      - python3-feedburner
+    show: true
+    version: 1.0.0
+  - name: EarthBound ROM Explorer
+    description: Explore the data and code of the EarthBound SNES ROM. See it <a href="http://earthbound-rom-explorer.heroku.com">here</a>.
+    repo: Earthbound-ROM-Explorer
+    show: false
+    version: 0.0.0
+    release_date: ~
+  - name: kinkgen
+    description: Homestuck Kink Meme prompt generator. Try it <a href="http://filialpails.tumblr.com/kinkgen">here</a>.
+    repo: kinkgen
+    version: 2.0.0
+    release_date: ~
+    show: true
+libs:
+  - name: 65816.js
+    description: 65816 CPU emulator/disassembler for JavaScript. Part of Earthbound ROM Explorer.
+    repo: 65816.js
+    version: 0.0.0
+    release_date: ~
+    show: false
+  - name: Noise to Signal
+    description: jQuery plugin which prints random characters and gradually "decodes" them into a desired string.
+    repo: Noise-to-Signal
+    requirements:
+      - jQuery
+    version: 2.0.0
+    release_date: 2014-02-10
+    show: true
+  - name: dither
+    description: HTML5 image filter to simulate an RGB555 15-bit palette.
+    repo: dither
+    requirements:
+      - jQuery
+      - nostalgia
+    version: 1.0.0
+    release_date: 2013-03-07
+    show: true
+  - name: LibMons
+    description: Multi-franchise monster collecting/battling library
+    genre: Animal cruelty
+    repo: LibMons
+    requirements:
+      - .NET Framework 4.5.1
+    version: 0.0.0
+    release_date: ~
+    show: false
+  - name: tildeath
+    description: ~ATH interpreter
+    repo: tildeath
+    requirements:
+      - Ruby
+      - mortality
+    version: 0.0.1
+    release_date: 2014-02-04
+    show: true

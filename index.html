@@ -1,13 +1,20 @@
 ---
 layout: default
-title: Your New Jekyll Site
 ---
-
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+<section>
+  <h1>$ cat intro.txt</h1>
+  <p>I make stuff.</p>
+</section>
+{% for data_store in site.data.projects %}
+<section class="projectsSection">
+  <h1>$ ls {{ data_store[0] }}</h1>
+  <ul class="projectsList">
+    {% for project in data_store[1] %}
+    {% unless project.show %}{% continue %}{% endunless %}
+    <li class="projectsListItem">
+      <a href="{{ project.name | downcase | split:' ' | join:'_' }}.html">{{ project.name }}</a>
+    </li>
     {% endfor %}
   </ul>
-</div>
+</section>
+{% endfor %}
