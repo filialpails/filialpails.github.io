@@ -93,9 +93,9 @@ apps:
   - name: EarthBound ROM Explorer
     description: Explore the data and code of the EarthBound SNES ROM. See it <a href="http://earthbound-rom-explorer.herokuapp.com/">here</a>.
     repo: Earthbound-ROM-Explorer
-    show: false
-    version: 0.0.0
-    release_date: ~
+    show: true
+    version: 2.0.0
+    release_date: 2014-02-111
   - name: kinkgen
     description: Homestuck Kink Meme prompt generator. Try it <a href="http://filialpails.tumblr.com/kinkgen">here</a>.
     repo: kinkgen
