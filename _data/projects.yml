@@ -102,6 +102,23 @@ apps:
     version: 2.0.0
     release_date: ~
     show: true
+  - name: tildeath
+    description: ~ATH interpreter
+    repo: tildeath
+    requirements:
+      - Ruby
+      - mortality
+    version: 0.0.1
+    release_date: 2014-02-04
+    show: true
+  - name: twitch_plays
+    description: Yet another Twitch Plays Pokemon clone. MMO-ify any game over IRC.
+    repo: twitch_plays
+    requirements:
+      - Ruby
+    version: 1.0.0
+    release_date: 2014-03-14
+    show: true
 libs:
   - name: 65816.js
     description: 65816 CPU emulator/disassembler for JavaScript. Part of Earthbound ROM Explorer.
@@ -135,12 +152,3 @@ libs:
     version: 0.0.0
     release_date: ~
     show: false
-  - name: tildeath
-    description: ~ATH interpreter
-    repo: tildeath
-    requirements:
-      - Ruby
-      - mortality
-    version: 0.0.1
-    release_date: 2014-02-04
-    show: true
