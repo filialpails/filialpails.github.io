@@ -12,7 +12,7 @@ layout: default
     {% for project in data_store[1] %}
     {% unless project.show %}{% continue %}{% endunless %}
     <li class="projectsListItem">
-      <a href="{{ project.name | downcase | split:' ' | join:'_' }}.html">{{ project.name }}</a>
+      <a href="{{ project.name | downcase | split:' ' | join:'_' }}.html">{{ project.name }}/</a>
     </li>
     {% endfor %}
   </ul>

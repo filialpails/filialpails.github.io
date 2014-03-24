@@ -16,14 +16,15 @@ games:
     requirements:
       - .NET Framework 4.5.1
       - Credulity
-    version: 1.1
+    version: 1.1.0
     release_date: 2012-11-21
     show: true
   - name: Oceanbound
     description: Seduce middle-aged men, save the world.
     genre: Kawaii RPG
     repo: Oceanbound
-    requirements: []
+    requirements:
+      - An up-to-date browser
     version: Christmas Alpha
     release_date: 2012-12-25
     show: true
@@ -77,17 +78,24 @@ games:
     version: 0.0.0
     release_date: ~
     show: false
+  - name: ScarletOS
+    description: Virtual maid simulator, featuring both panels and pons.
+    genre: Puzzling
+    repo: ScarletOS
+    version: 1.0.0
+    release_date: 2014-03-22
+    show: true
 apps:
   - name: mspanotify-gtk
     description: Get notified by silly gifs when your favourite webcomics update!
     repo: mspanotify
     requirements:
       - python3
+      - python3-feedburner
       - python3-gi
       - gir1.2-gtk-3.0
       - gir1.2-appindicator3-0.1
       - gir1.2-gstreamer-1.0 (optional)
-      - python3-feedburner
     show: true
     version: 1.0.0
   - name: EarthBound ROM Explorer
@@ -95,7 +103,7 @@ apps:
     repo: Earthbound-ROM-Explorer
     show: true
     version: 2.0.0
-    release_date: 2014-02-111
+    release_date: 2014-02-11
   - name: kinkgen
     description: Homestuck Kink Meme prompt generator. Try it <a href="http://filialpails.tumblr.com/kinkgen">here</a>.
     repo: kinkgen
@@ -103,7 +111,7 @@ apps:
     release_date: ~
     show: true
   - name: tildeath
-    description: ~ATH interpreter
+    description: Interpreter for the esoteric programming language ~ATH.
     repo: tildeath
     requirements:
       - Ruby
@@ -125,7 +133,7 @@ libs:
     repo: 65816.js
     version: 0.0.0
     release_date: ~
-    show: false
+    show: true
   - name: Noise to Signal
     description: jQuery plugin which prints random characters and gradually "decodes" them into a desired string.
     repo: Noise-to-Signal
@@ -144,7 +152,7 @@ libs:
     release_date: 2013-03-07
     show: true
   - name: LibMons
-    description: Multi-franchise monster collecting/battling library
+    description: Multi-franchise monster collecting/battling library.
     genre: Animal cruelty
     repo: LibMons
     requirements:

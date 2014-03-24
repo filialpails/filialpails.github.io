@@ -1,7 +1,7 @@
 {% assign project = site.data.projects[page.type][page.data_id] %}
 {% include top.html %}
 <main id="main">
-  <h1>$ cd {{ page.type}}/{{ project.name }}{% if project.version %} v{{ project.version }}{% endif %}</h1>
+  <h1>$ cd {{ page.type}}/{{ project.name }}{% if project.version %}{% endif %}</h1>
   <p>{{ project.description | newline_to_br }}</p>
   <table id="infoTable">
     {% if page.type == 'games' %}
@@ -10,10 +10,10 @@
       <td>{{ project.genre }}</td>
     </tr>
     {% endif %}
-    {% if project.release_date %}
+    {% if project.version %}
     <tr>
-      <td>Release date</td>
-      <td>{{ project.release_date }}</td>
+      <td>Version</td>
+      <td>{{ project.version }}{% if project.release_date %} ({{ project.release_date }}){% endif %}</td>
     </tr>
     {% endif %}
     {% if project.requirements %}
