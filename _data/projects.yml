@@ -82,8 +82,8 @@ games:
     description: Virtual maid simulator, featuring both panels and pons.
     genre: Puzzling
     repo: ScarletOS
-    version: 1.0.0
-    release_date: 2014-03-22
+    version: 2.0.0
+    release_date: 2014-06-4
     show: true
 apps:
   - name: mspanotify-gtk
