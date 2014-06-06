@@ -1,4 +1,9 @@
 name: filialpails.github.io
 markdown: redcarpet
-pygments: true
-exclude: ['Gemfile', 'Gemfile.lock', 'LICENSE', 'README.md']
+exclude: [Gemfile, Gemfile.lock, LICENSE, README.md]
+encoding: utf-8
+gems:
+- jekyll-mentions
+- jemoji
+- jekyll-redirect-from
+- jekyll-sitemap
