@@ -83,7 +83,7 @@ games:
     genre: Puzzling
     repo: ScarletOS
     version: 2.0.0
-    release_date: 2014-06-4
+    release_date: 2014-06-04
     show: true
 apps:
   - name: mspanotify-gtk
