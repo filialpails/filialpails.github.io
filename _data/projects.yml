@@ -124,8 +124,8 @@ apps:
     repo: twitch_plays
     requirements:
       - Ruby
-    version: 1.0.0
-    release_date: 2014-03-14
+    version: 1.1.0
+    release_date: 2014-06-29
     show: true
 libs:
   - name: 65816.js
