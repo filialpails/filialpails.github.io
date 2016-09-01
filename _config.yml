@@ -1,9 +1,16 @@
-name: filialpails.github.io
+title: filialpails.github.io
 markdown: redcarpet
 exclude: [Gemfile, Gemfile.lock, LICENSE, README.md]
 encoding: utf-8
 gems:
+- jekyll-coffeescript
+- jekyll-feed
+- jekyll-gist
+- jekyll-github-metadata
 - jekyll-mentions
-- jemoji
+- jekyll-paginate
 - jekyll-redirect-from
+- jekyll-seo-tag
 - jekyll-sitemap
+- jemoji
+- jekyll-admin

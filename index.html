@@ -1,20 +1,18 @@
 ---
 layout: default
 ---
-<section>
-  <h1>$ cat intro.txt</h1>
-  <p>I make stuff.</p>
-</section>
-{% for data_store in site.data.projects %}
 <section class="projectsSection">
-  <h1>$ ls {{ data_store[0] }}</h1>
   <ul class="projectsList">
-    {% for project in data_store[1] %}
-    {% unless project.show %}{% continue %}{% endunless %}
+{% for repo in site.github.public_repositories %}
     <li class="projectsListItem">
-      <a href="{{ project.name | downcase | split:' ' | join:'_' }}.html">{{ project.name }}/</a>
+{% if repo.has_pages %}
+      <a href="https://{{ site.github.html_url }}/{{ repo.name }}">{{ repo.name }}/</a> - {{ repo.description }}
+{% elsif repo.homepage %}
+      <a href="{{ repo.homepage }}">{{ repo.name }}/</a> - {{ repo.description }}
+{% else %}
+      <a href="{{ repo.html_url }}">{{ repo.name }}/</a> - {{ repo.description }}
+{% endif %}
     </li>
-    {% endfor %}
+{% endfor %}
   </ul>
 </section>
-{% endfor %}
