@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>真・友達誕生日</title>
+    <style>/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-block}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}</style>
+    <style>
+      @media (min-width: 256px) and (min-height: 224px) {
+        html { font-size: 8px; }
+      }
+
+      @media (min-width: 512px) and (min-height: 448px) {
+        html { font-size: 16px; }
+      }
+
+      @media (min-width: 1024px) and (min-height: 896px) {
+        html { font-size: 32px; }
+      }
+
+      @media (min-width: 2048px) and (min-height: 1792px) {
+        html { font-size: 64px; }
+      }
+
+      @keyframes blink {
+        0% { opacity: 1.0; }
+        50% { opacity: 0.0; }
+        100% { opacity: 0.0; }
+      }
+
+      html {
+        background-color: #000;
+        color: #f0f0f0;
+        font-family: monospace;
+        text-align: center;
+      }
+
+      pre {
+        margin: 0;
+      }
+
+      #screen {
+        background-color: #394239;
+        width: 32rem;
+        height: 28rem;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #world {
+        margin: 1rem;
+        border-top-width: 0.375rem;
+        border-bottom-width: 0.625rem;
+        border-left-width: 1rem;
+        border-right-width: 1rem;
+        border-style: inset;
+        border-color: #394239;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: pixelated;
+        outline-style: solid;
+        outline-width: 0.125rem;
+        outline-color: #000;
+        width: 28rem;
+        height: 13rem;
+      }
+
+      #party {
+        margin: 0.5rem;
+        border-style: double;
+        border-width: 0.5rem;
+        border-color: #000;
+        height: 10rem;
+      }
+
+      #partyTable {
+        background-color: #000;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+      }
+
+      .partyTableHeader {
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: left;
+      }
+
+      .partyTableCell {
+        text-align: left;
+        vertical-align: baseline;
+      }
+
+      #dialogBox {
+        border-width: 0.5rem;
+        border-style: ridge;
+        border-color: #f0f0f0;
+        background-color: #000;
+        position: absolute;
+        top: 13.5rem;
+        left: 3rem;
+        width: 24rem;
+        height: 4rem;
+        padding: 0.5rem;
+      }
+
+      #dialog {
+        text-align: left;
+      }
+
+      #prompt {
+        visibility: hidden;
+        position: absolute;
+        bottom: 2rem;
+        right: 0.5rem;
+        animation-name: blink;
+        animation-duration: 500ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(2);
+      }
+
+      #answers {
+        visibility: hidden;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        position: absolute;
+        bottom: 2rem;
+        right: 0.5rem;
+        text-align: left;
+      }
+
+      #yes, #no, #prompt {
+        cursor: pointer;
+      }
+
+      #yes:hover, #no:hover {
+        background-image: radial-gradient(#00b0f0, transparent);
+      }
+
+      .right-align {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="screen">
+      <img id="world" src="pascal.png"/>
+
+      <div id="party">
+        <table id="partyTable">
+          <thead>
+            <tr>
+              <th class="partyTableHeader">♯</th>
+              <th class="partyTableHeader">Name</th>
+              <th class="partyTableHeader right-align">Hit-pts</th>
+              <th class="partyTableHeader right-align">MP</th>
+              <th class="partyTableHeader">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="partyTableCell">1</th>
+              <td class="partyTableCell">Max</th>
+              <td class="partyTableCell right-align">20/ 20</th>
+              <td class="partyTableCell right-align">・・・</th>
+              <td class="partyTableCell">・・・・・・</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="dialogBox">
+        <pre id="dialog"></pre>
+        <div id="prompt">▼</div>
+        <ul id="answers">
+          <li id="yes">Yes</li>
+          <li id="no">No</li>
+        </ul>
+      </div>
+    </div>
+
+    <audio src="pascal.ogg" loop autoplay/>
+
+    <script>
+      (() => {
+      const dialogBox = document.getElementById("dialogBox");
+      const dialog = document.getElementById("dialog");
+      let prompt = document.getElementById("prompt");
+      const answers = document.getElementById("answers");
+      let yes = document.getElementById("yes");
+      let no = document.getElementById("no");
+
+      const removeAllEventHandlers = (node) => {
+        const clone = node.cloneNode(true);
+        node.parentNode.replaceChild(clone, node);
+        return clone;
+      };
+ 
+      const say = (text, next) => {
+        prompt.style.visibility = "hidden";
+        answers.style.visibility = "hidden";
+        prompt = removeAllEventHandlers(prompt);
+        dialogBox.style.height = "";
+        dialog.textContent = text;
+        prompt.style.visibility = "visible";
+        prompt.addEventListener("click", next, {once: true});
+      };
+
+      const ask = (text, on_yes, on_no) => {
+        prompt.style.visibility = "hidden";
+        answers.style.visibility = "hidden";
+        yes = removeAllEventHandlers(yes);
+        no = removeAllEventHandlers(no);
+        dialogBox.style.height = "11rem";
+        dialog.textContent = text;
+        answers.style.visibility = "visible";
+        yes.addEventListener("click", on_yes, {once: true});
+        no.addEventListener("click", on_no, {once: true});
+      };
+
+      const hideDialogBox = () => {
+        // dialogBox.style.display = "none";
+        say("<><><><><><><><><><><><><><><><><><><>\n<><><><><><><><><><><><><><><><><><><>\n<><><><><><><><><><><><><><><><><><><>", hideDialogBox);
+      };
+
+      say(">Pascal the dog is here.", () => {
+        ask("Will you talk to him?", () => {
+          say("Pascal the dog:\nBowwow! Bowwow! (Happy birthday Max!)", () => {
+            say(">He gives you a present.", () => {
+              ask("Open the present?", () => {
+                say(">Inside the present, there was\na game featuring Pascal the dog!", () => {
+                  say(">What a good doggy.", () => {
+                    ask("Will you pet him?", () => {
+                      say(">Pascal looks happy.", hideDialogBox);
+                    }, () => {
+                      say(">Pascal looks sad...", hideDialogBox);
+                    });
+                  });
+                });
+              },
+              () => {
+                say(">Pascal looks sad...", hideDialogBox);
+              });
+            });
+          });
+        },
+        () => {
+          say(">Pascal looks sad...", hideDialogBox);
+        });
+      });
+      })();
+    </script>
+  </body>
+</html>
