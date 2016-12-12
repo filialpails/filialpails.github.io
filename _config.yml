@@ -3,14 +3,20 @@ markdown: redcarpet
 exclude: [Gemfile, Gemfile.lock, LICENSE, README.md]
 encoding: utf-8
 gems:
+- jekyll-avatar
 - jekyll-coffeescript
+- jekyll-default-layout
 - jekyll-feed
 - jekyll-gist
 - jekyll-github-metadata
 - jekyll-mentions
+- jekyll-optional-front-matter
 - jekyll-paginate
+- jekyll-readme-index
 - jekyll-redirect-from
+- jekyll-relative-links
 - jekyll-seo-tag
 - jekyll-sitemap
+- jekyll-titles-from-headings
 - jemoji
 - jekyll-admin

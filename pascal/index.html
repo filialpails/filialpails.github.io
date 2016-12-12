@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>真・友達誕生日</title>
     <style>/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-block}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}</style>
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet"/>
     <style>
       @media (min-width: 256px) and (min-height: 224px) {
         html { font-size: 8px; }
@@ -23,20 +24,26 @@
       }
 
       @keyframes blink {
-        0% { opacity: 1.0; }
-        50% { opacity: 0.0; }
-        100% { opacity: 0.0; }
+        0% { opacity: 0.0; }
+        50% { opacity: 1.0; }
+        100% { opacity: 1.0; }
       }
 
-      html {
+      :root {
         background-color: #000;
         color: #f0f0f0;
-        font-family: monospace;
+        font-family: 'Share Tech Mono', monospace;
         text-align: center;
       }
 
       pre {
         margin: 0;
+        font-family: unset;
+      }
+
+      img {
+        image-rendering: -moz-crisp-edges;
+        image-rendering: pixelated;
       }
 
       #screen {
@@ -56,13 +63,26 @@
         border-right-width: 1rem;
         border-style: inset;
         border-color: #394239;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: pixelated;
         outline-style: solid;
         outline-width: 0.125rem;
         outline-color: #000;
         width: 28rem;
         height: 13rem;
+      }
+
+      #worldOverlay {
+        width: 10rem;
+        height: 12rem;
+        position: absolute;
+        top: 2rem;
+        left: 12rem;
+        opacity: 0;
+        animation-name: blink;
+        animation-duration: 100ms;
+        animation-fill-mode: both;
+        animation-iteration-count: 20;
+        animation-timing-function: steps(2);
+        animation-play-state: paused;
       }
 
       #party {
@@ -71,13 +91,14 @@
         border-width: 0.5rem;
         border-color: #000;
         height: 10rem;
+        background-clip: content-box;
+        background-color: #000;
       }
 
       #partyTable {
         background-color: #000;
         margin: auto;
         width: 100%;
-        height: 100%;
       }
 
       .partyTableHeader {
@@ -109,7 +130,7 @@
       }
 
       #prompt {
-        visibility: hidden;
+        display: none;
         position: absolute;
         bottom: 2rem;
         right: 0.5rem;
@@ -120,7 +141,7 @@
       }
 
       #answers {
-        visibility: hidden;
+        display: none;
         margin: 0;
         padding: 0;
         list-style-type: none;
@@ -138,6 +159,16 @@
         background-image: radial-gradient(#00b0f0, transparent);
       }
 
+      #sugunikese {
+        display: none;
+        background-color: #000;
+        color: #f00000;
+        position: absolute;
+        top: 0;
+        left: -0.9em;
+        font-size: 2em;
+      }
+
       .right-align {
         text-align: right;
       }
@@ -146,6 +177,7 @@
   <body>
     <div id="screen">
       <img id="world" src="pascal.png"/>
+      <img id="worldOverlay" src="cerberus.png"/>
 
       <div id="party">
         <table id="partyTable">
@@ -159,13 +191,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="partyTableCell">1</th>
-              <td class="partyTableCell">Max</th>
-              <td class="partyTableCell right-align">20/ 20</th>
-              <td class="partyTableCell right-align">・・・</th>
-              <td class="partyTableCell">・・・・・・</th>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -178,12 +203,41 @@
           <li id="no">No</li>
         </ul>
       </div>
+
+      <div id="sugunikese">
+        <pre>すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ
+すぐにけせすぐにけせすぐにけせすぐにけせ</pre>
+      </div>
     </div>
 
-    <audio src="pascal.ogg" loop autoplay/>
+    <audio id="pascalBGM" src="pascal.webm" loop autoplay></audio>
+    <audio id="sugunikeseBGM" src="sugunikese2.webm" loop preload></audio>
+
+    <template id="partyRowTemplate">
+      <tr>
+        <td class="partyTableCell"></td>
+        <td class="partyTableCell"></td>
+        <td class="partyTableCell right-align"> 20/ 20</td>
+        <td class="partyTableCell right-align">・・・</td>
+        <td class="partyTableCell">・・・・・・</td>
+      </tr>
+    </template>
 
     <script>
       (() => {
+      const world = document.getElementById("world");
+      const partyTable = document.getElementById("partyTable");
       const dialogBox = document.getElementById("dialogBox");
       const dialog = document.getElementById("dialog");
       let prompt = document.getElementById("prompt");
@@ -196,57 +250,242 @@
         node.parentNode.replaceChild(clone, node);
         return clone;
       };
- 
+
       const say = (text, next) => {
-        prompt.style.visibility = "hidden";
-        answers.style.visibility = "hidden";
+        prompt.style.display = "none";
+        answers.style.display = "none";
         prompt = removeAllEventHandlers(prompt);
         dialogBox.style.height = "";
         dialog.textContent = text;
-        prompt.style.visibility = "visible";
+        if (!next) return;
+        prompt.style.display = "block";
         prompt.addEventListener("click", next, {once: true});
       };
 
       const ask = (text, on_yes, on_no) => {
-        prompt.style.visibility = "hidden";
-        answers.style.visibility = "hidden";
+        prompt.style.display = "none";
+        answers.style.display = "none";
         yes = removeAllEventHandlers(yes);
         no = removeAllEventHandlers(no);
         dialogBox.style.height = "11rem";
         dialog.textContent = text;
-        answers.style.visibility = "visible";
+        answers.style.display = "block";
         yes.addEventListener("click", on_yes, {once: true});
         no.addEventListener("click", on_no, {once: true});
       };
 
+      const name = location.hash.substring(1) || "Max";
+
       const hideDialogBox = () => {
-        // dialogBox.style.display = "none";
+        if (name !== "Max") return;
         say("<><><><><><><><><><><><><><><><><><><>\n<><><><><><><><><><><><><><><><><><><>\n<><><><><><><><><><><><><><><><><><><>", hideDialogBox);
       };
 
+      const iterate = (n, f, arg) => {
+        for (let i = 0; i < n; ++i) {
+          arg = f(arg);
+        }
+        return arg;
+      };
+
+      const array_from_func = (n, f) => {
+        const arr = [];
+        for (let i = 0; i < n; ++i) {
+          arr[i] = f();
+        }
+        return arr;
+      }
+
+      const randomChar = () => String.fromCodePoint(Math.floor(Math.random() * 0x4f + 0x20));
+      const randomString = (n) => array_from_func(Math.floor(Math.random() * n + 1), randomChar).join("");
+      const randomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+      const glitchText = (str) => {
+        const index = Math.floor(Math.random() * str.length);
+        const chars = str.split("");
+        chars[index] = randomChar();
+        return chars.join("");
+      };
+
+      const removeComponent = (data, index, component) => {
+        data[index + component] = 0;
+      };
+
+      const removeRed = (data, index) => removeComponent(data, index, 0);
+      const removeGreen = (data, index) => removeComponent(data, index, 1);
+      const removeBlue = (data, index) => removeComponent(data, index, 2);
+
+      const randomizeComponent = (data, index, component) => {
+        data[index + component] = Math.floor(Math.random() * 256) >> 3 << 3;
+      };
+
+      const randomizeRed = (data, index) => randomizeComponent(data, index, 0);
+      const randomizeRedAndGreen = (data, index) => {
+        randomizeRed(data, index);
+        randomizeGreen(data, index);
+      };
+      const randomizeGreen = (data, index) => randomizeComponent(data, index, 1);
+      const randomizeGreenAndBlue = (data, index) => {
+        randomizeGreen(data, index);
+        randomizeBlue(data, index);
+      };
+      const randomizeBlue = (data, index) => randomizeComponent(data, index, 2);
+      const randomizeRedAndBlue = (data, index) => {
+        randomizeRed(data, index);
+        randomizeBlue(data, index);
+      };
+      const randomizeAll = (data, index) => {
+        randomizeRed(data, index);
+        randomizeGreen(data, index);
+        randomizeBlue(data, index);
+      };
+
+      const glitchFuncs = [
+        removeRed, removeGreen, removeBlue,
+        randomizeRed, randomizeRedAndGreen,
+        randomizeGreen, randomizeGreenAndBlue,
+        randomizeBlue, randomizeRedAndBlue,
+        //randomizeAll
+      ];
+
+      const glitchImage = (img, n) => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 224;
+        canvas.height = 104;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        for (let i = 0; i < n; ++i) {
+          const size = randomElement([8, 16]);
+          const x = Math.floor(Math.random() * canvas.width / size) * size;
+          const y = Math.floor(Math.random() * canvas.height / size) * size;
+          const func = randomElement(glitchFuncs);
+          const data = ctx.getImageData(x, y, size, size);
+          for (let j = 0; j < size * size; ++j) func(data.data, j * 4);
+          ctx.putImageData(data, x, y);
+        }
+
+        img.src = canvas.toDataURL();
+      };
+
+      const addPartyMember = (name, hp, max_hp, mp, status) => {
+        const tbody = partyTable.children[1];
+        const row = document.importNode(document.getElementById("partyRowTemplate").content, true).children[0];
+        const cells = row.children;
+        cells[0].textContent = (tbody.childElementCount + 1).toString();
+        cells[1].textContent = name;
+        max_hp = max_hp.toString();
+        if (max_hp.length < 3) max_hp = ` ${max_hp}`;
+        cells[2].textContent = `${hp}/${max_hp}`;
+        if (mp !== 0) cells[3].textContent = mp.toString();
+        if (status !== null) cells[4].textContent = status;
+        tbody.appendChild(row);
+      };
+
+      const addRandomPartyMember = () => addPartyMember(randomString(16), Math.floor(Math.random() * 999 + 1), Math.floor(Math.random() * 999 + 1), Math.floor(Math.random() * 999 + 1), randomString(6));
+
+      const crash = (str) => {
+        say(str);
+
+        setTimeout(() => {
+          str = glitchText(str);
+          glitchImage(world, 8);
+          addRandomPartyMember();
+          say(str);
+
+          setTimeout(() => {
+            str = iterate(2, glitchText, str);
+            glitchImage(world, 16);
+            addRandomPartyMember();
+            say(str);
+
+            setTimeout(() => {
+              str = iterate(3, glitchText, str);
+              glitchImage(world, 32);
+              addRandomPartyMember();
+              say(str);
+
+              setTimeout(() => {
+                str = iterate(4, glitchText, str);
+                glitchImage(world, 64);
+                addRandomPartyMember();
+                say(str);
+
+                setTimeout(() => {
+                  str = iterate(5, glitchText, str);
+                  glitchImage(world, 128);
+                  addRandomPartyMember();
+                  say(str);
+
+                  setTimeout(() => {
+                    document.getElementById("sugunikese").style.display = "block";
+                    document.getElementById("pascalBGM").pause();
+                    document.getElementById("sugunikeseBGM").play();
+                  }, 1000);
+                }, 1000);
+              }, 1000);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      };
+
+      const evolve = () => {
+        worldOverlay.style.animationPlayState = "running";
+        say(">What? Pascal is evolving!");
+        setTimeout(() => {
+          say(">Pascal evolved into Cerberus!");
+        }, 3600);
+      };
+
+      const konami_code = [
+        "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
+        "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
+        "b", "a"
+      ];
+      const code_length = konami_code.length;
+      let code_index = 0;
+
+      document.addEventListener("keydown", (event) => {
+        event.preventDefault();
+        if (event.key === konami_code[code_index]) {
+          ++code_index;
+          if (code_index !== code_length) return;
+          evolve();
+        }
+        code_index = 0;
+      });
+
+      addPartyMember(name, 20, 20, 0, null);
+
       say(">Pascal the dog is here.", () => {
         ask("Will you talk to him?", () => {
-          say("Pascal the dog:\nBowwow! Bowwow! (Happy birthday Max!)", () => {
+          say(`Pascal the dog:\nBowwow! Bowwow! (Happy birthday ${name}!)`, () => {
             say(">He gives you a present.", () => {
               ask("Open the present?", () => {
                 say(">Inside the present, there was\na game featuring Pascal the dog!", () => {
                   say(">What a good doggy.", () => {
                     ask("Will you pet him?", () => {
-                      say(">Pascal looks happy.", hideDialogBox);
+                      say(">Pascal looks happy.", () => {
+                        say("Pascal the dog:\nBowwow! Bowwow! (This game has a secret.\nCan you find it?)", () => {
+                          say("Pascal the dog:\nBowwow! Bowwow! (Here's a hint:\nHave you ever played Contra?)", () => {
+                            say("Pascal the dog:\nGrowl... (Fuck Konami though.)");
+                          });
+                        });
+                      });
                     }, () => {
-                      say(">Pascal looks sad...", hideDialogBox);
+                      crash(">Pascal looks sad...");
                     });
                   });
                 });
               },
               () => {
-                say(">Pascal looks sad...", hideDialogBox);
+                crash(">Pascal looks sad...");
               });
             });
           });
         },
         () => {
-          say(">Pascal looks sad...", hideDialogBox);
+          crash(">Pascal looks sad...");
         });
       });
       })();
